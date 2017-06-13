@@ -9,20 +9,30 @@
   </head>
 
   <body>
-    
+
     <%= render "shared/header" %>
-          
+
     <main>
       <div class="container">
         <%= render "shared/message" %>
         <%= yield %>
       </div>
     </main>
-    
+
     <%= render "shared/footer" %>
-    
+
   </body>
   <script>
     $(".button-collapse").sideNav();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 60, // Creates a dropdown of 10 years to control year
+            format: 'dd/mm/yyyy',
+            min: [new Date().getFullYear()-60,12,31],
+            max: [new Date().getFullYear()-13,12,31],
+            closeOnSelect: true,
+            closeOnClear: true,
+        });
   </script>
 </html>
