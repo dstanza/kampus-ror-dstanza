@@ -9,22 +9,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="datepicker">
-    <%= f.label "Date of Birth" %><br />
-      <%= f.text_field :dob, class: "datepicker" %>
-    </div>
-
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_area :address %>
-  </div>
-
-  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
