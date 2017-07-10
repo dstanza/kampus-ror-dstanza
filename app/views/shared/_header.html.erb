@@ -10,7 +10,7 @@
   <li class="divider"></li>
   <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
 </ul>
-    
+
 <header>
   <nav>
     <div class="container">
@@ -24,9 +24,11 @@
             <li> <%= link_to "Login", new_user_session_path %> </li>
           <% else %>
             <!-- Dropdown Trigger -->
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"> <%= current_user.name %> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown1">
+              <%= image_tag avatar_url(current_user),  class: "circle responsive-img" %>
+              <%= current_user.name %> <i class="material-icons right">arrow_drop_down</i></a></li>
           <% end %>
-          
+
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#">Course</a></li>
