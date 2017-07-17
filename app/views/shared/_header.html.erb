@@ -1,12 +1,12 @@
 <ul id="dropdown1" class="dropdown-content">
   <li><%= link_to "My Profile", edit_user_registration_path %> </li>
-  <li><a href="#!">My Courses</a></li>
+  <li><%= link_to "My Courses", my_courses_path %></li>
   <li class="divider"></li>
   <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
 </ul>
 <ul id="dropdown2" class="dropdown-content">
   <li><%= link_to "My Profile", edit_user_registration_path %> </li>
-  <li><a href="#!">My Courses</a></li>
+  <li><%= link_to "My Courses", my_courses_path %></li>
   <li class="divider"></li>
   <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
 </ul>
@@ -15,10 +15,10 @@
   <nav>
     <div class="container">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Kampus RoR</a>
+        <a href="/" class="brand-logo">Kampus RoR</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="#">Course</a></li>
+          <li><%= link_to "Courses", courses_path %></li>
           <% if !user_signed_in? %>
             <li> <%= link_to "Sign Up" , new_user_registration_path %></li>
             <li> <%= link_to "Login", new_user_session_path %> </li>
@@ -27,12 +27,13 @@
             <li><a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown1">
               <%= image_tag avatar_url(current_user),  class: "circle responsive-img" %>
               <!-- <%= current_user.name %> -->
-               <i class="material-icons right">arrow_drop_down</i></a></li>
-              <% end %>
+               <i class="material-icons right">arrow_drop_down</i></a>
+             </li>
+          <% end %>
 
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><a href="#">Course</a></li>
+          <li><%= link_to "Courses", courses_path %></li>
           <% if !user_signed_in? %>
             <li> <%= link_to "Sign Up" , new_user_registration_path %></li>
             <li> <%= link_to "Login", new_user_session_path %> </li>
