@@ -32,6 +32,9 @@
       <h5><%= @course.title %></h5>
       <hr />
       <%= @course.description%>
+      <hr />
+      <h5>Tasks</h5>
+      <hr />
       <div class="collection">
         <% @tasks.each do |task|%>
           <%= link_to [@course, task], class: "collection-item" do %>
@@ -42,12 +45,3 @@
     </div>
   </div>
 </div>
-
-<h1><%= @course.title %></h1>
-<p><%= @course.description %></p>
-
-<h2>Tasks</h2>
-<% @tasks.each do |task| %>
-  <div><%= link_to task.title, course_task_path(@course, task) %></div>
-
-<% end %>

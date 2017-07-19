@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   end
 
   get "/my_courses", to: "courses#my_courses"
-  
+  post "/payment_notification", to: "courses#payment_notification"
 end
