@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170717041658) do
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.money "price", scale: 2
+    t.float "price"
     t.string "status"
     t.string "image"
     t.datetime "created_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170717041658) do
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "course_id"
-    t.boolean "active"
+    t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_subscriptions_on_course_id"

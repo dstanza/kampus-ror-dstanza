@@ -10,7 +10,7 @@ ActiveAdmin.register Course do
       link_to course.title, admin_course_path(course)
     end
     column :price do |course|
-      number_to_currency(course.price / 10, precision: 2)
+      number_to_currency(course.price)
     end
     column :status
     column :number_of_tasks do |course|
@@ -24,7 +24,7 @@ ActiveAdmin.register Course do
       row :title
       row :description
       row :price do
-        number_to_currency(course.price / 10, precision: 2)
+        number_to_currency(course.price)
       end
       row :status
       row :image do
