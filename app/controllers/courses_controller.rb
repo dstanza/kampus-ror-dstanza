@@ -9,7 +9,9 @@ class CoursesController < ApplicationController
   def show
     @course = Course.friendly.find(params[:id])
     @tasks = @course.tasks
-  end
+    @review = Review.new(course_id: @course.id, user_id: current_user.id) if user_signed_in?
+    @reviews = @course.reviews
+end
 
   def subscribe
     @course = Course.friendly.find(params[:id])
@@ -23,11 +25,11 @@ class CoursesController < ApplicationController
         :cmd => "_xclick",
         :upload => 1,
         :amount => @course.price,
-        :notify_url => "https://3b7a3539.ngrok.io/payment_notification",
+        :notify_url => "http://574a3123.ngrok.io/payment_notification",
         :item_name => @course.title,
         :item_number => @subscription.id,
         :quantity => 1,
-        :return => "https://3b7a3539.ngrok.io/my_courses"
+        :return => "http://574a3123.ngrok.io/my_courses"
       }
       redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     end

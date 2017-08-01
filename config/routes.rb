@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :subscribe
     end
     resources :tasks, only: [:show]
+    resources :reviews, only: [:create, :destroy]
   end
 
   get "/my_courses", to: "courses#my_courses"
