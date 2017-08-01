@@ -1,11 +1,12 @@
+
 <div class="row">
   <div class="col m4">
     <div class="card z-depth-2">
       <div class="center">
-        <h1><%=  current_user.has_course?(@course) ? "20%" : number_to_currency(@course.price) %></h1>
+        <h1><%= user_signed_in? && current_user.has_course?(@course) ? "20%" : number_to_currency(@course.price) %></h1>
       </div>
       <div class="card-action center">
-        <% if current_user.has_course?(@course) %>
+        <% if user_signed_in? && current_user.has_course?(@course) %>
           <%= link_to @course do %>
             <button class= "btn waves-effect waves-light green darken-2">
               View this course
@@ -30,6 +31,10 @@
     </div>
     <div class="card-content grey-text text-darken-4">
       <h5><%= @course.title %></h5>
+        <span>
+          <div class="review_star" data-score='<%= @course.average_rating %>'></div>
+          <i><%= pluralize(@reviews.count, 'Review') %></i>
+        </span>
       <hr />
       <%= @course.description%>
       <hr />
@@ -47,7 +52,7 @@
             <div class="collection-item lighten-4">
               <div class="tooltip">
                 <%= task.title %>
-                <span class="tooltiptext">You must take this course to have access to all tasks.</span> 
+                <span class="tooltiptext">You must take this course to have access to all tasks.</span>
               </div>
 
             </div>
@@ -56,6 +61,11 @@
 
         <% end %>
       </div>
+    </div>
+    <div class="card-content">
+      <h5>Reviews</h5>
+      <%= render "reviews/form" if user_signed_in? && current_user.has_course?(@course) && !current_user.has_course_review?(@course) %>
+      <%= render "reviews/reviews" %>
     </div>
   </div>
 </div>

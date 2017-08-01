@@ -3,6 +3,7 @@ $primary-color: color("blue", "darken-1") !default;
 $secondary-color: color("blue", "darken-3") !default;
 @import 'materialize';
 @import 'toastr';
+@import 'jquery.raty';
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
