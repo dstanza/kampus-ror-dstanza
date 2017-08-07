@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     has_many :subscriptions, -> {where(active: true)},  dependent: :destroy
     has_many :courses, through: :subscriptions
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
 
     def self.from_omniauth(auth)
        where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -23,8 +23,9 @@ class User < ApplicationRecord
 
     def self.new_with_session(params, session)
         super.tap do |user|
-          if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-            user.email = data["email"] if user.email.blank?
+          data = session["devise.facebook_data"]
+          if data.present? &&  data["extra"] && data["extra"]["raw_info"]
+            user.email = data["info"]["email"] if user.email.blank?
           end
         end
     end
