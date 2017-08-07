@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('#review_rating').raty
+  $('#review_rating').raty 
     path: '/assets'
     scoreName : 'review[star]'
     score: 3

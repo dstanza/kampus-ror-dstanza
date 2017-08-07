@@ -6,6 +6,8 @@ one:
   description: MyText
   video_url: MyString
   image: MyString
+  slug: task-one
+
 
 two:
   course: two
@@ -13,3 +15,4 @@ two:
   description: MyText
   video_url: MyString
   image: MyString
+  slug: task-two
