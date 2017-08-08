@@ -1,49 +1,61 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circleci-demo-ruby-rails
+    working_directory: ~/myapp
     docker:
       - image: circleci/ruby:2.4.1-node
         environment:
-          RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: root
+          RAILS_ENV: test
       - image: circleci/postgres:9.6.2-alpine
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: circle-test_test
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
 
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-            - rails-demo-{{ checksum "Gemfile.lock" }}
-            - rails-demo-
+      - type: cache-restore
+        name: Restore bundle cache
+        key: myapp-bundle-{{ checksum "Gemfile.lock" }}
 
-      # Bundle install dependencies
-      - run:
-          name: Install dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
-
-      - run: sudo apt install postgresql-client
-
-      # Store bundle cache
-      - save_cache:
-          key: rails-demo-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      - type: cache-restore
+        name: Restore yarn cache
+        key: myapp-yarn-{{ checksum "yarn.lock" }}
 
       - run:
-          name: Database Setup
-          command: |
-            bundle exec rake db:create db:schema:load --trace &&  
-            bundle exec rake db:migrate
+          name: Bundle Install
+          command: bin/bundle install --path vendor/bundle
 
       - run:
-          name: Run All Test
-          command: DISABLE_SPRING=true bin/rake test test/
+          name: Yarn Install
+          command: yarn install
 
-      # Save artifacts
-      - store_test_results:
-          path: /tmp/test-results
+      - type: cache-save
+        name: Store bundle cache
+        key: myapp-bundle-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      - type: cache-save
+        name: Store yarn cache
+        key: myapp-yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.yarn-cache
+
+      - run:
+          name: Rubocop
+          command: bin/rubocop --rails
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+
+      - run:
+          name: Run tests
+          command: DISABLE_SPRING=true bin/rails test test/
