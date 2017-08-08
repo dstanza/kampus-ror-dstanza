@@ -14,7 +14,7 @@
 
 //$skinLogo: url("admin_logo.png") no-repeat 0 0;
 $skinLogo: none;
-
+@import "activeadmin_sortable_table";
 @import "active_skin";
 
 // Overriding any non-variable SASS must be done after the fact.
