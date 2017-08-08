@@ -18,20 +18,9 @@ end
     @subscription = Subscription.find_or_create_by(user: current_user, course_id: @course.id)
 
     if @subscription.active?
-      redirect_to my_courses_path
+      redirect_to @course
     else
-      values = {
-        :business => "dwindy.stanza-facilitator@outlook.com",
-        :cmd => "_xclick",
-        :upload => 1,
-        :amount => @course.price,
-        :notify_url => "http://24485205.ngrok.io/payment_notification",
-        :item_name => @course.title,
-        :item_number => @subscription.id,
-        :quantity => 1,
-        :return => "http://24485205.ngrok.io"
-      }
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + @course.paypal_link(current_user)
     end
   end
 
