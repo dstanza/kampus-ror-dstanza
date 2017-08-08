@@ -1,7 +1,7 @@
 class Course < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, -> { order(position: :asc) } , dependent: :destroy
   has_many :subscriptions, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
