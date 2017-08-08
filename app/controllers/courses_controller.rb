@@ -3,7 +3,11 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:subscribe, :my_courses]
 
   def index
-    @courses = Course.all
+    if params[:search]
+      @courses = Course.where("LOWER(title) like ?", "%#{params[:search].downcase}%")
+    else
+      @courses = Course.all
+    end
   end
 
   def show
