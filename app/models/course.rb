@@ -23,11 +23,11 @@ class Course < ApplicationRecord
       :cmd => "_xclick",
       :upload => 1,
       :amount => price,
-      :notify_url => "http://24485205.ngrok.io/payment_notification",
+      :notify_url => "http://6739de1d.ngrok.io/payment_notification",
       :item_name => title,
       :item_number => subscription.id,
       :quantity => 1,
-      :return => "http://24485205.ngrok.io"
+      :return => "http://6739de1d.ngrok.io"
     }.to_query
 
   end

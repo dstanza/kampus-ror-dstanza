@@ -4,7 +4,9 @@ class TasksController < ApplicationController
 
   def show
     course = Course.friendly.find(params[:course_id])
-    @tasks = course.tasks
+    @tasks = course.tasks.accessible_by(current_ability)
+    @previous_task = @task.previous_task(@tasks)
+    @next_task = @task.next_task(@tasks)
     
   end
 end
