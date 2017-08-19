@@ -28,7 +28,9 @@ ActiveAdmin.register Course do
   show do
     attributes_table do
       row :title
-      row :description
+      row :description do
+        raw course.description
+      end
       row :price do
         number_to_currency(course.price)
       end
@@ -36,6 +38,9 @@ ActiveAdmin.register Course do
       row :image do
         course.image.present? ? image_tag(course.image.url, height: 300) : content_tag(:span, "No image")
       end
+      row :created_at
+      row :updated_at
+
     end
 
     panel "Tasks" do
@@ -48,13 +53,12 @@ ActiveAdmin.register Course do
         column :video_url
       end
     end
-
   end
 
   form do |f|
     f.inputs do
       f.input :title
-      f.input :description
+      f.input :description, as: :html_editor
       f.input :price
       f.input :status, as: :select, collection: ["Active", "Not Active"], include_blank: false
       f.input :image, hint: course.image.present? ? image_tag(course.image.url, height: 100) : content_tag(:span, "No image")

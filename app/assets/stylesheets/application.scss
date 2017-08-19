@@ -6,7 +6,7 @@ $secondary-color: color("blue", "darken-3") !default;
 @import 'jquery.raty';
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
+@import "active_admin/editor/wysiwyg";
 
 body {
     display: flex;
