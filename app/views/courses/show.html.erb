@@ -36,7 +36,7 @@
           <i><%= pluralize(@reviews.count, 'Review') %></i>
         </span>
       <hr />
-      <%= @course.description%>
+      <%= raw @course.description %>
       <hr />
       <h5>Tasks</h5>
       <hr />
