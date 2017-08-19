@@ -31,4 +31,8 @@ class Course < ApplicationRecord
     }.to_query
 
   end
+
+  def user_progress(user)
+    tasks.length > 0 ? (user.user_tasks.completed.where(task_id: task_ids).length * 100 / tasks.length) : 0
+  end
 end

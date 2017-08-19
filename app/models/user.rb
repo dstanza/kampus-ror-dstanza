@@ -44,7 +44,7 @@ class User < ApplicationRecord
     end
 
     def has_completed_task?(task)
-      user_tasks.where(completed: true, task: task).first      
+      user_tasks.completed.where(task: task).first      
     end
 
 end
