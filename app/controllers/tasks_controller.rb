@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   	@tasks = course.tasks.accessible_by(current_ability)
     @next_task = @task.next_task(@tasks) 
     
-    if @next_task
+    if @next_task 
 			redirect_to course_task_path(@task.course, @next_task), notice: "Task successfully completed"
     else
 			redirect_to @task.course, notice: "Yeay!! You have completed this course!"
