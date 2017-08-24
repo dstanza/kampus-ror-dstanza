@@ -7,7 +7,14 @@ class ReviewsController < ApplicationController
     @course = Course.friendly.find(params[:course_id])
     @review.course = @course
     @review.save
-    redirect_to @course, notice: "Review succesfully submitted"
+    
+    respond_to do |format|
+      format.html do
+        redirect_to @course, notice: "Review succesfully submitted"
+      end
+      format.js
+    end
+
   end
 
   def review_params
@@ -16,6 +23,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to @review.course, notice: "Review succesfully removed"
+
+    respond_to do |format|
+      format.html do
+        redirect_to @review.course, notice: "Review succesfully removed"
+      end
+      format.js
+    end
   end
 end
