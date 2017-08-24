@@ -1,4 +1,4 @@
-class CoursesController < ApplicationController
+  class CoursesController < ApplicationController
   protect_from_forgery except: [:payment_notification]
   before_action :authenticate_user!, only: [:subscribe, :my_courses]
 
