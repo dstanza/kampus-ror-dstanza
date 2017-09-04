@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dstanza
+  api_key: '754979248667823'
+  api_secret: "-QwvPQcJZnYA_WpAdkaXS5ZSvQ8"
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dstanza
+  api_key: '754979248667823'
+  api_secret: "-QwvPQcJZnYA_WpAdkaXS5ZSvQ8"
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dstanza
+  api_key: '754979248667823'
+  api_secret: "-QwvPQcJZnYA_WpAdkaXS5ZSvQ8"
+  enhance_image_tag: true
+  static_image_support: false
