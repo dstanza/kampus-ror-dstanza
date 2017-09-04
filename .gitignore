@@ -21,5 +21,6 @@
 # Ignore application configuration
 /config/application.yml
 /public/system/*
+/public/uploads/*
 /ngrok
 coverage
