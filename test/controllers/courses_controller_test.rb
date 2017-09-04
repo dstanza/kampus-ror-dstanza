@@ -42,6 +42,10 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  
+  test "should be able to search course" do
+    get courses_path, params: {search: "one"}
+    assert_response :success
+    assert assigns(:courses), courses(:one)
+  end
 
 end

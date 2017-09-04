@@ -71,3 +71,4 @@ gem "activeadmin_sortable_table", github: "sabril/activeadmin_sortable_table"
 gem 'active_admin_editor', github: "boontdustie/active_admin_editor"
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'rails-controller-testing'
