@@ -51,9 +51,14 @@ jobs:
 
             bundle exec rake test test/ "
 
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+      - run:
+          name: Deploy to heroku
+          branch: master
+          command: |
+            if ["${CIRCLE_BRANCH }" == "master" ]; then
+              echo 'heroku.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAtixaa1vi2Q1k2Au9vtpFBl2Xi9FHzoOxZzOze+RXRq85//UsoN3K7xSlx6QcL3Fc4rOuhzysAul1OUO5HxVUIuS2MLYLq6/wPbKCT2KwYteKideDBkIz3rxHDwWCr19mUG22LPV0DK0e51jHtJfSz61DWrmE8b1ikEp1XkSp5VVcLpCVooSZg7L/VvG6WUIsdwymQKDNGYhn/aVoXu9889GB+cBOtJeaQH6Rsvab5BwMt6e2REpLyWMvcv3NwKyK9VVlu6VB6aT6G/rmunBFMTnDIrulJzdpO+Wnvhdl9MI1nixmyp9URuUZnFt8x1k556whJ3YxeSAKzy3k32lp1Q== dstanza@DSTANZA-PC' >> ~/.ssh/known_hosts
+              git push git@heroku.com:dstanza-kampus-ror-dstanza.git master
+            fi
+
+          # heroku config:add gmail_user_name=didi_stanza@gmail.com gmail_password=xxxxxxxx
+          # heroku config:add FACEBOOK_KEY=xxxx FACEBOOK_SECRET=xxxx
