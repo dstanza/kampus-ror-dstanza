@@ -1186,51 +1186,10 @@
         null,
         null
       ],
-      "/home/dstanza/Documents/kampus-ror-dstanza/app/controllers/tasks_controller.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        2,
-        2,
-        2,
-        2,
-        null,
-        null,
-        1,
-        2,
-        2,
-        2,
-        2,
-        null,
-        2,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null
-      ],
       "/home/dstanza/Documents/kampus-ror-dstanza/app/controllers/home_controller.rb": [
         1,
         1,
         null,
-        null
-      ],
-      "/home/dstanza/Documents/kampus-ror-dstanza/app/mailers/payment_mailer.rb": [
-        1,
-        1,
-        2,
-        2,
-        2,
-        null,
-        null
-      ],
-      "/home/dstanza/Documents/kampus-ror-dstanza/app/mailers/application_mailer.rb": [
-        1,
-        1,
-        1,
         null
       ],
       "/home/dstanza/Documents/kampus-ror-dstanza/app/controllers/courses_controller.rb": [
@@ -1279,6 +1238,47 @@
         null,
         1,
         2,
+        null,
+        null,
+        null
+      ],
+      "/home/dstanza/Documents/kampus-ror-dstanza/app/mailers/payment_mailer.rb": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/home/dstanza/Documents/kampus-ror-dstanza/app/mailers/application_mailer.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/dstanza/Documents/kampus-ror-dstanza/app/controllers/tasks_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
         null,
         null,
         null
@@ -1339,6 +1339,6 @@
         0
       ]
     },
-    "timestamp": 1504506184
+    "timestamp": 1504891221
   }
 }
